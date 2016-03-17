@@ -1,9 +1,10 @@
 package nl.mdevcon.speakerslist
 
-class ShowAllSpeakersInteractor(val gateway: EntityGatewayProtocol) {
+class ShowAllSpeakersInteractor(val gateway: EntityGatewayProtocol, val presenter: SpeakersListPresenter) {
 
     fun showAllSpeakers() {
         val speakers = gateway.fetchAllSpeakers()
-        speakers.map { it.toDisplayData() }
+        val displayData = speakers.map { it.toDisplayData() }
+        presenter.presentAllSpeakers(displayData)
     }
 }
