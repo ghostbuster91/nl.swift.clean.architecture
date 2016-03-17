@@ -4,7 +4,7 @@ class ShowAllSpeakersInteractor(val gateway: EntityGatewayProtocol, val presente
 
     fun showAllSpeakers() {
         val speakers = gateway.fetchAllSpeakers()
-        val displayData = speakers.map { it.toDisplayData() }
+        val displayData = speakers.map(::SpeakerDisplayData)
         presenter.presentAllSpeakers(displayData)
     }
 }
